@@ -1,0 +1,49 @@
+.navbar {
+  height: 86px;
+}
+.center-image {
+  img {
+    max-height: 375px;
+    width: 100%;
+  }
+}
+.container-fluid {
+  height: 160px;
+  width: 100%;
+  margin: 0px;
+  .card_search {
+    margin: 30px;
+    padding: 10px 20px 20px 20px;
+    label {
+      margin-bottom: 10px;
+    }
+  }
+}
+.search-input {
+  input {
+    padding: 10px;
+  }
+}
+
+.delivery-data {
+  width: 50%;
+  margin: 10px auto;
+  background-color: lightgray;
+}
+.next-btn {
+  color: white;
+  position: absolute;
+  top: 50px;
+  right: 30px;
+  border: none;
+  border-radius: 20px;
+  padding: 10px;
+  height: 35px;
+  svg {
+    margin-top: -11px;
+  }
+}
+
+.bg-blue {
+  background-color: #061ab1;
+}
