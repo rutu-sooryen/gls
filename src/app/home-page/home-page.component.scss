@@ -26,9 +26,14 @@
 }
 
 .delivery-data {
-  width: 50%;
+  width: 40%;
   margin: 10px auto;
-  background-color: lightgray;
+  background-color: #dee2e67a;
+  text-align: center;
+  label {
+    font-size: 20px;
+    font-weight: bold;
+  }
 }
 .next-btn {
   color: white;
