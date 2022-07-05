@@ -20,6 +20,7 @@ export class HomePageComponent implements OnInit {
   onSeachDropdownValue() {
     if (this.deliveryId.value) {
       this.deliveryService.getDeliveryList(this.deliveryId.value).subscribe((res: any) => {
+        console.log("res", res);
         this.errorMessage = '';
         this.displayDeliveryList = res;
       }, () => {
