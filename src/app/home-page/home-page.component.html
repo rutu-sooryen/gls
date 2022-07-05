@@ -18,14 +18,7 @@
           <label for="track text-bold"><b>Shipment Tracking</b></label>
           <div class="search-input">
             <input minlength="4" class="form-control shadow-none" [formControl]="deliveryId" type="text"
-              (keyup)="onSeachDropdownValue($event)" placeholder="Track ID">
-            <div class="dropdown-selector">
-              <div *ngIf="deliveryList" (click)="displayLayout()">
-                <div class="border p-2 rounded shadow-sm cursor-pointer">
-                  {{ deliveryList.reasonName }}
-                </div>
-              </div>
-            </div>
+              placeholder="Track ID" (input)="clearList()">
             <button type="button" class="bg-blue next-btn" style="color: white;" (click)="displayLayout()">
               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                 class="bi bi-arrow-right" viewBox="0 0 16 16">
@@ -48,10 +41,12 @@
   </svg>
   {{ errorMessage }}
 </p>
-<div *ngIf="displayDeliveryList" class="card delivery-data">
+ <div *ngIf="displayDeliveryList" class="card border-0 delivery-data">
   <div class="card-body">
-    <label>ID: </label> {{ displayDeliveryList.id }} <br>
-    <label>Name: </label> {{ displayDeliveryList.idName }}<br>
-    <label>Reason Name: </label> {{ displayDeliveryList.reasonName }} <br>
+    <div class="dropdown">
+      <select class="btn border bootstrap-select">
+       <option class="dropdown-item" value="1" selected="selected">{{ displayDeliveryList.reasonName }}</option>
+     </select>
+   </div>
   </div>
 </div>

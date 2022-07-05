@@ -11,33 +11,31 @@ import { DeliveryService } from '../services/delivery.service';
 export class HomePageComponent implements OnInit {
   errorMessage = '';
   deliveryId = new FormControl();
-  deliveryList: any;
   displayDeliveryList: any;
   constructor(public deliveryService: DeliveryService) { }
 
   ngOnInit(): void {
-    this.deliveryList = null;
   }
 
-  onSeachDropdownValue($event: any) {
-    if ($event.target.value) {
-      this.deliveryService.getDeliveryList($event.target.value).subscribe((res: any) => {
-        this.deliveryList = null;
+  onSeachDropdownValue() {
+    if (this.deliveryId.value) {
+      this.deliveryService.getDeliveryList(this.deliveryId.value).subscribe((res: any) => {
         this.errorMessage = '';
-        this.displayDeliveryList = null;
-        this.deliveryList = res;
+        this.displayDeliveryList = res;
       }, () => {
-        this.deliveryList = null;
         this.displayDeliveryList = null;
         this.errorMessage = "Please enter valid ID";
       });
     }
   }
 
+  clearList() {
+    this.displayDeliveryList = null;
+  }
+
   displayLayout() {
-    this.displayDeliveryList = this.deliveryList;
-    this.deliveryList = null;
-    this.errorMessage = '';
+    this.displayDeliveryList = null;
+    this.onSeachDropdownValue();
   }
 
 }
