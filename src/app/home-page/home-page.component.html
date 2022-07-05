@@ -21,14 +21,14 @@
               (keyup)="onSeachDropdownValue($event)" placeholder="Track ID">
             <div class="dropdown-selector">
               <div *ngIf="deliveryList">
-                <div class="border p-2 rounded shadow-sm bg-light cursor-pointer">
+                <div class="border p-2 rounded shadow-sm cursor-pointer">
                   <b>ID: </b> {{ deliveryList.id }}
                   <b>Name: </b> {{ deliveryList.idName }}
                   <b>Reason Name: </b> {{ deliveryList.reasonName }}
                 </div>
               </div>
             </div>
-            <button type="button" class="bg-blue next-btn" style="color: white;" (click)="onSeachDropdownValue($event)">
+            <button type="button" class="bg-blue next-btn" style="color: white;" (click)="onSelectDropdownValue($event)">
               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                 class="bi bi-arrow-right" viewBox="0 0 16 16">
                 <path fill-rule="evenodd"
