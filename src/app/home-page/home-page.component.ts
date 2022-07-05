@@ -19,7 +19,6 @@ export class HomePageComponent implements OnInit {
   ngOnInit(): void {
     this.displayDeliveryList = null;
     this.deliveryService.getDeliveryList().subscribe((res: any) => {
-      console.log("res", res);
       this.errorMessage = '';
       this.selectedValue = '';
       this.dropDownList = res;
@@ -38,7 +37,6 @@ export class HomePageComponent implements OnInit {
       this.displayDeliveryList.filter((option: any) => {
         if (option.id == this.deliveryId.value) {
           this.selectedValue = option.reasonName;
-          console.log("this.selectedValue", this.selectedValue);
         }
       });
     }
