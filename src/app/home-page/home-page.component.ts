@@ -1,3 +1,4 @@
+import { ThisReceiver } from '@angular/compiler';
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { DeliveryService } from '../services/delivery.service';
@@ -5,8 +6,7 @@ import { DeliveryService } from '../services/delivery.service';
 @Component({
   selector: 'app-home-page',
   templateUrl: './home-page.component.html',
-  styleUrls: ['./home-page.component.scss'],
-  encapsulation: ViewEncapsulation.None,
+  styleUrls: ['./home-page.component.scss']
 })
 export class HomePageComponent implements OnInit {
   errorMessage = '';
@@ -14,16 +14,25 @@ export class HomePageComponent implements OnInit {
   deliveryList: any;
   constructor(public deliveryService: DeliveryService) { }
 
-  ngOnInit(): void { }
+  ngOnInit(): void {
+    this.deliveryList = null;
+  }
 
-  getDeliveryList() {
-    this.deliveryService.getDeliveryList(this.deliveryId.value).subscribe((res: any) => {
-      this.deliveryList = res;
-      this.errorMessage = '';
-    }, () => {
-      this.deliveryList = null;
-      this.errorMessage = "Please enter valid ID";
-    });
+  onSeachDropdownValue($event: any) {
+    if ($event.target.value) {
+      this.deliveryService.getDeliveryList($event.target.value).subscribe((res: any) => {
+        this.deliveryList = null;
+        this.errorMessage = '';
+        this.deliveryList = res;
+      }, () => {
+        this.deliveryList = null;
+        this.errorMessage = "Please enter valid ID";
+      });
+    }
+  }
+
+  onSelectDropdownValue(option: any) {
+    // this.onSeachDropdownValue();
   }
 
 }

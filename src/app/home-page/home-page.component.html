@@ -1,6 +1,8 @@
 <nav class="navbar navbar-dark bg-blue">
   <div class="container">
-    <a class="navbar-brand text-bold" ><h1 style="font-weight: 900; font-size: 43px;">GLS</h1></a>
+    <a class="navbar-brand text-bold">
+      <h1 style="font-weight: 900; font-size: 43px;">GLS</h1>
+    </a>
   </div>
 </nav>
 
@@ -15,8 +17,18 @@
         <div class="searchfield text-center">
           <label for="track text-bold"><b>Shipment Tracking</b></label>
           <div class="search-input">
-            <input class="form-control" type="text" placeholder="Track ID" [formControl]="deliveryId">
-            <button type="button" class="bg-blue next-btn" style="color: white;" (click)="getDeliveryList()">
+            <input minlength="4" class="form-control shadow-none" [formControl]="deliveryId" type="text"
+              (keyup)="onSeachDropdownValue($event)" placeholder="Track ID">
+            <div class="dropdown-selector">
+              <div *ngIf="deliveryList">
+                <div class="border p-2 rounded shadow-sm bg-light cursor-pointer">
+                  <b>ID: </b> {{ deliveryList.id }}
+                  <b>Name: </b> {{ deliveryList.idName }}
+                  <b>Reason Name: </b> {{ deliveryList.reasonName }}
+                </div>
+              </div>
+            </div>
+            <button type="button" class="bg-blue next-btn" style="color: white;" (click)="onSeachDropdownValue($event)">
               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                 class="bi bi-arrow-right" viewBox="0 0 16 16">
                 <path fill-rule="evenodd"
@@ -40,8 +52,8 @@
 </p>
 <div *ngIf="deliveryList" class="card delivery-data">
   <div class="card-body">
-    <label>ID:  </label> {{ deliveryList.id |json}} <br>
-    <label>Name: </label> {{ deliveryList.idName |json}}<br>
-    <label>Reason Name: </label> {{ deliveryList.reasonName |json}} <br>
+    <label>ID: </label> {{ deliveryList.id }} <br>
+    <label>Name: </label> {{ deliveryList.idName }}<br>
+    <label>Reason Name: </label> {{ deliveryList.reasonName }} <br>
   </div>
 </div>
