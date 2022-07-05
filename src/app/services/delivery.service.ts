@@ -12,8 +12,7 @@ export class DeliveryService {
 
   constructor(public http: HttpClient) { }
 
-  getDeliveryList(deliveryId: string): any {
-    console.log("url", this.baseUrl + this.deliveryList + '/' + deliveryId);
-    return this.http.get(this.baseUrl + this.deliveryList + '/' + deliveryId);
+  getDeliveryList(): any {
+    return this.http.get(this.baseUrl + this.deliveryList);
   }
 }
