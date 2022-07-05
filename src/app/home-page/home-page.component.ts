@@ -12,6 +12,7 @@ export class HomePageComponent implements OnInit {
   errorMessage = '';
   deliveryId = new FormControl();
   deliveryList: any;
+  displayDeliveryList: any;
   constructor(public deliveryService: DeliveryService) { }
 
   ngOnInit(): void {
@@ -23,16 +24,20 @@ export class HomePageComponent implements OnInit {
       this.deliveryService.getDeliveryList($event.target.value).subscribe((res: any) => {
         this.deliveryList = null;
         this.errorMessage = '';
+        this.displayDeliveryList = null;
         this.deliveryList = res;
       }, () => {
         this.deliveryList = null;
+        this.displayDeliveryList = null;
         this.errorMessage = "Please enter valid ID";
       });
     }
   }
 
-  onSelectDropdownValue(option: any) {
-    // this.onSeachDropdownValue();
+  displayLayout() {
+    this.displayDeliveryList = this.deliveryList;
+    this.deliveryList = null;
+    this.errorMessage = '';
   }
 
 }

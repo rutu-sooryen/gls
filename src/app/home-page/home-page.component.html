@@ -20,7 +20,7 @@
             <input minlength="4" class="form-control shadow-none" [formControl]="deliveryId" type="text"
               (keyup)="onSeachDropdownValue($event)" placeholder="Track ID">
             <div class="dropdown-selector">
-              <div *ngIf="deliveryList">
+              <div *ngIf="deliveryList" (click)="displayLayout()">
                 <div class="border p-2 rounded shadow-sm cursor-pointer">
                   <b>ID: </b> {{ deliveryList.id }}
                   <b>Name: </b> {{ deliveryList.idName }}
@@ -28,7 +28,7 @@
                 </div>
               </div>
             </div>
-            <button type="button" class="bg-blue next-btn" style="color: white;" (click)="onSelectDropdownValue($event)">
+            <button type="button" class="bg-blue next-btn" style="color: white;" (click)="displayLayout()">
               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                 class="bi bi-arrow-right" viewBox="0 0 16 16">
                 <path fill-rule="evenodd"
@@ -50,10 +50,10 @@
   </svg>
   {{ errorMessage }}
 </p>
-<div *ngIf="deliveryList" class="card delivery-data">
+<div *ngIf="displayDeliveryList" class="card delivery-data">
   <div class="card-body">
-    <label>ID: </label> {{ deliveryList.id }} <br>
-    <label>Name: </label> {{ deliveryList.idName }}<br>
-    <label>Reason Name: </label> {{ deliveryList.reasonName }} <br>
+    <label>ID: </label> {{ displayDeliveryList.id }} <br>
+    <label>Name: </label> {{ displayDeliveryList.idName }}<br>
+    <label>Reason Name: </label> {{ displayDeliveryList.reasonName }} <br>
   </div>
 </div>
